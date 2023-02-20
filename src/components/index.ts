@@ -1,20 +1,17 @@
 import { App } from 'vue'
-import chooseArea from './chooseArea/src/index.vue'
-import chooseIcon from './chooseIcon/src/index.vue'
+import chooseArea from './chooseArea'
+import chooseIcon from './chooseIcon'
 
-const component = [
+const components = [
     chooseArea,
     chooseIcon
 ]
 
-console.log('component: ', component);
- 
-
+// 让这个组件可以通过use的
 export default {
     install(app:App){
-        // for(let item in component) {
-        //     console.log('item: ', item);
-        //     app.component(i.name,i)
-        // }
+        components.map(item => {
+            app.use(item)
+        })
     }
 }
