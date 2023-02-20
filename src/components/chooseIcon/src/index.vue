@@ -20,7 +20,7 @@
   </div>
 </template>
 
-<script lang='ts' setup>
+<script lang='ts' setup name="MChooseArea">
 import { watch,ref } from "vue"
 import * as ElIcons from '@element-plus/icons-vue'
 import { toLine } from "../../../utils";

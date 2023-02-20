@@ -6,9 +6,11 @@ import 'element-plus/dist/index.css'
 import * as Icons from '@element-plus/icons-vue'
 import { toLine } from './utils'
 
+import com from './components/index'
+
 const app = createApp(App)
 
-app.use(router).use(ElementPlus)
+app.use(router).use(ElementPlus).use(com)
 
 // 全局注册图标，牺牲一点性能
 // 转换图标的命名为：el-icon-xxx
