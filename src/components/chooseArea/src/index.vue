@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-select clearable v-model="provice" placeholder="请选择省份">
+    <el-select clearable v-model="province" placeholder="请选择省份">
     <el-option
       v-for="item in allArea"
       :key="item.code"
@@ -8,7 +8,7 @@
       :value="item.code"
     />
   </el-select>
-  <el-select clearable :disabled="!provice" style="margin: 0 20px;" v-model="city" placeholder="请选择城市">
+  <el-select clearable :disabled="!province" style="margin: 0 20px;" v-model="city" placeholder="请选择城市">
     <el-option
       v-for="item in selectCity"
       :key="item.code"
@@ -16,7 +16,7 @@
       :value="item.code"
     />
   </el-select>
-  <el-select clearable :disabled="!provice || !city" v-model="area" placeholder="请选择区域">
+  <el-select clearable :disabled="!province || !city" v-model="area" placeholder="请选择区域">
     <el-option
       v-for="item in selectArea"
       :key="item.code"
@@ -44,7 +44,7 @@ export interface Data{
   code: string
 }
 
-let provice = ref<string>('')
+let province = ref<string>('')
 let city = ref<string>('')
 let area = ref<string>('')
 
@@ -55,10 +55,10 @@ let selectArea = ref<AreaItem[]>([])
 
 let emits = defineEmits(['getData'])
 
-watch(()=>provice.value,(val)=>{
+watch(()=>province.value,(val)=>{
   if(val){
     // ! 代表前一个一定是有值的
-    let citiesArr =  allArea.value.find(item => item.code === provice.value)!.children
+    let citiesArr =  allArea.value.find(item => item.code === province.value)!.children
     selectCity.value = citiesArr
   }
   city.value = ''
@@ -75,9 +75,9 @@ watch(()=>city.value,(val)=>{
 
 watch(()=>area.value, val=> {
   if(!val) return
-    let proviceData: Data={
-      name: allArea.value.find(item => item.code === provice.value)!.name,
-      code:provice.value
+    let provinceData: Data={
+      name: allArea.value.find(item => item.code === province.value)!.name,
+      code:province.value
     }
 
     let cityData: Data={
@@ -90,7 +90,7 @@ watch(()=>area.value, val=> {
     }
 
     emits('getData',{
-    provice :proviceData,
+    province :provinceData,
     city: cityData,
     area: areaData
   })
