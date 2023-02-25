@@ -4,6 +4,7 @@ import Home from '../views/Home.vue';
 import ChooseIcon from '../views/chooseIcon/index.vue'
 import ChooseArea from '../views/chooseArea/index.vue'
 import Trend from '../views/trend/index.vue'
+import Notification from '../views/notification/index.vue'
 
 const routes: RouteRecordRaw[]= [
     {
@@ -27,6 +28,10 @@ const routes: RouteRecordRaw[]= [
             {
                 path: '/trend',
                 component: Trend
+            },
+            {
+                path:'/notification',
+                component: Notification
             }
         ]
     }
