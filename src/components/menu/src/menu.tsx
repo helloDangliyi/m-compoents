@@ -70,7 +70,7 @@ export default defineComponent({
                 router={props.router}
                 {...attrs}
                 >
-                  {renderMenu(props.data)}
+                  {renderMenu(props.data!)}
                 </el-menu>
             )
         }
