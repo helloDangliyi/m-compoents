@@ -1,8 +1,6 @@
 <template>
   <div>
     首页
-    <el-button>Default</el-button>
-    <el-icon-edit/>
   </div>
 </template>
 

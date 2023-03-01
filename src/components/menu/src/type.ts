@@ -1,4 +1,4 @@
-export interface menuList {
+export interface MenuItem {
     // 导航图标
     icon?: string,
     // 处理之后的图标
@@ -8,6 +8,6 @@ export interface menuList {
     // 导航的标识
     index: string,
 
-    // child是个数组，里面每一项的类型是menuList
-    child?: menuList[]
+    // children是个数组，里面每一项的类型是MenuItem
+    children?: MenuItem[]
 }

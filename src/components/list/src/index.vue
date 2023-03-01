@@ -1,5 +1,11 @@
 <template>
-  <div>list</div>
+  <div v-for="(item,index) in list" :key="index">
+    <div>{{ item.title }}</div>
+    <div v-for="item2 in item.content">
+    <span>{{ item2.title }}</span>
+    <span>{{ item2.desc }}</span>
+    </div>
+  </div>
 </template>
 
 <script lang='ts' setup>
@@ -30,6 +36,9 @@ let props = defineProps({
     default: () => []
   }
 })
+
+console.log('props: ', props.list);
+
 </script>
 
 <style lang="scss" scoped></style>

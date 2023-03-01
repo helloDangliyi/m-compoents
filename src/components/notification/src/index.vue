@@ -1,10 +1,5 @@
 <template>
-
-<el-popover
-    placement="bottom"
-    :width="300"
-    trigger="click"
-  >
+  <el-popover placement="bottom" :width="300" trigger="click">
     <template #reference>
       <el-badge style="cursor: pointer" :value="value" :max="max" :isDot="isDot">
         <component :is="`el-icon-${toLine(icon)}`"></component>
@@ -12,14 +7,9 @@
     </template>
 
     <template #default>
-       <slot></slot>
+      <slot></slot>
     </template>
   </el-popover>
-
-
-
-  
-
 </template>
 
 <script lang='ts' setup>
@@ -29,10 +19,10 @@ import { toLine } from "../../../utils";
 let props = defineProps({
   icon: {
     type: String,
-    default:'Bell'
+    default: 'Bell'
   },
   value: {
-    type: [Number,String],
+    type: [Number, String],
     default: ''
   },
   max: {
@@ -40,7 +30,7 @@ let props = defineProps({
     default: 0
   },
   isDot: {
-    type:Boolean,
+    type: Boolean,
     default: false
   },
 

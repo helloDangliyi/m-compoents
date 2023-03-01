@@ -72,7 +72,7 @@ let props = defineProps({
 })
 
 let slots =useSlots()
-console.log('slots: ', slots);
+// console.log('slots: ', slots);
 
 let textColor = computed(()=> {
   return props.type === 'up' ? props.upTextColor: props.downTextColor

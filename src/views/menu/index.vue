@@ -37,7 +37,7 @@ let data1 = [
     name: '导航3',
     index: '3',
     icon: 'document',
-    child: [
+    children: [
       {
         name: '导航3-1',
         index: '3-1',
@@ -63,22 +63,22 @@ let data2 = [
     name: '导航3',
     index: '3',
     icon: 'document',
-    child: [
+    children: [
       {
         name: '导航3-1',
         index: '3-1',
         icon: 'document',
-        child: [
+        children: [
           {
             name: '导航3-1-1',
             index: '3-1-1',
             icon: 'document',
-            child: [
+            children: [
               {
                 name: '导航3-1-1-1',
                 index: '3-1-1-1',
                 icon: 'document',
-                child: [
+                children: [
                   {
                     name: '导航3-1-1-1-1',
                     index: '3-1-1-1-1',

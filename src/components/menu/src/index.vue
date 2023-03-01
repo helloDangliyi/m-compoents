@@ -3,7 +3,7 @@
   <el-menu :default-active="defaultActive" :router="router" v-bind="$attrs">
     <template v-for="(item,index) in data" :key="index">
       <!-- 有子菜单 -->
-      <el-menu-item v-if="!item.child || !item.child.length" :index="item.index">
+      <el-menu-item v-if="!item.children || !item.children.length" :index="item.index">
         <component v-if="item.icon" :is="`el-icon-${toLine(item.icon)}`"></component>
         <span>{{ item.name }}</span>
       </el-menu-item>
@@ -14,7 +14,7 @@
           <component v-if="item.icon" :is="`el-icon-${toLine(item.icon)}`"></component>
             <span>{{ item.name }}</span>
           </template>
-        <el-menu-item v-for="(item1,index1) in item.child" :key="index1" :index="item1.index">
+        <el-menu-item v-for="(item1,index1) in item.children" :key="index1" :index="item1.index">
         <component v-if="item1.icon" :is="`el-icon-${toLine(item1.icon)}`"></component>
         <span>{{ item1.name }}</span>
       </el-menu-item>
@@ -26,11 +26,11 @@
 <script lang='ts' setup>
 import {PropType} from "vue"
 import { toLine } from "../../../utils";
-import { menuList } from "./type";
+import { MenuItem } from "./type";
 
 let props = defineProps({
   data:{
-    type: Array as PropType<menuList []>,
+    type: Array as PropType<MenuItem []>,
     require: true
   },
   // 默认选中的菜单
