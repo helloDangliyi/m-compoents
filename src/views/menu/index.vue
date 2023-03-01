@@ -3,7 +3,7 @@
 
     <div :style="{ width: '200px' }">
       <div style="margin-bottom: 20px;">基础菜单</div>
-      <m-menu :data="data1" defaultActive="2" active-text-color="red"></m-menu>
+      <m-menu :data="data1" defaultActive="2" active-text-color="red" name="a" index="a" icon="c" children="d"></m-menu>
     </div>
 
 
@@ -14,7 +14,7 @@
     -->
     <div :style="{ width: '200px' }">
       <div  style="margin-bottom: 20px;">无限层级菜单</div>
-      <m-infinite-menu :data="data2" defaultActive="2" active-text-color="red"></m-infinite-menu>
+      <m-infinite-menu :data="data2" defaultActive="2" active-text-color="red"  name="a" index="a" icon="c" children="d"></m-infinite-menu>
     </div>
   </div>
 </template>
@@ -24,24 +24,24 @@
 
 let data1 = [
   {
-    name: '导航1',
-    index: '1',
-    icon: 'document'
+    a: '导航1',
+    b: '1',
+    c: 'Document'
   },
   {
-    name: '导航2',
-    index: '2',
-    icon: 'document'
+    a: '导航2',
+    b: '2',
+    c: 'Document'
   },
   {
-    name: '导航3',
-    index: '3',
-    icon: 'document',
-    children: [
+    a: '导航3',
+    b: '3',
+    c: 'Document',
+    d: [
       {
-        name: '导航3-1',
-        index: '3-1',
-        icon: 'document'
+        a: '导航3-1',
+        b: '3-1',
+        c: 'Document'
       },
     ]
   },
@@ -50,39 +50,39 @@ let data1 = [
 
 let data2 = [
   {
-    name: '导航1',
-    index: '1',
-    icon: 'document'
+    a: '导航1',
+    b: '1',
+    c: 'Document'
   },
   {
-    name: '导航2',
-    index: '2',
-    icon: 'document'
+    a: '导航2',
+    b: '2',
+    c: 'Document'
   },
   {
-    name: '导航3',
-    index: '3',
-    icon: 'document',
-    children: [
+    a: '导航3',
+    b: '3',
+    c: 'Document',
+    d: [
       {
-        name: '导航3-1',
-        index: '3-1',
-        icon: 'document',
-        children: [
+        a: '导航3-1',
+        b: '3-1',
+        c: 'Document',
+        d: [
           {
-            name: '导航3-1-1',
-            index: '3-1-1',
-            icon: 'document',
-            children: [
+            a: '导航3-1-1',
+            b: '3-1-1',
+            c: 'Document',
+            d: [
               {
-                name: '导航3-1-1-1',
-                index: '3-1-1-1',
-                icon: 'document',
-                children: [
+                a: '导航3-1-1-1',
+                b: '3-1-1-1',
+                c: 'Document',
+                d: [
                   {
-                    name: '导航3-1-1-1-1',
-                    index: '3-1-1-1-1',
-                    icon: 'document',
+                    a: '导航3-1-1-1-1',
+                    b: '3-1-1-1-1',
+                    c: 'Document',
                   }
                 ]
               }
@@ -90,9 +90,9 @@ let data2 = [
           }]
       },
       {
-        name: '导航3-2',
-        index: '3-2',
-        icon: 'document',
+        a: '导航3-2',
+        b: '3-2',
+        c: 'Document',
       }
     ]
   },
