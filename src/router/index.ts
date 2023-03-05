@@ -7,6 +7,7 @@ import Trend from '../views/trend/index.vue'
 import Notification from '../views/notification/index.vue'
 import Menu from '../views/menu/index.vue'
 import Progress from '../views/progress/index.vue'
+import ChooseTime from '../views/chooseTime/index.vue'
 
 const routes: RouteRecordRaw[]= [
     {
@@ -42,6 +43,10 @@ const routes: RouteRecordRaw[]= [
             {
                 path:'/progress',
                 component: Progress
+            },
+            {
+                path: '/chooseTime',
+                component: ChooseTime
             }
         ]
     }
