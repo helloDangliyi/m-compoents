@@ -5,6 +5,7 @@ import trend from './trend'
 import notification from './notification'
 import list from './list'
 import menu from './menu'
+import progress from './progress'
 
 const components = [
     chooseArea,
@@ -12,7 +13,8 @@ const components = [
     trend,
     notification,
     list,
-    menu
+    menu,
+    progress
 ]
 
 // 让这个组件可以通过use的

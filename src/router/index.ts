@@ -6,6 +6,7 @@ import ChooseArea from '../views/chooseArea/index.vue'
 import Trend from '../views/trend/index.vue'
 import Notification from '../views/notification/index.vue'
 import Menu from '../views/menu/index.vue'
+import Progress from '../views/progress/index.vue'
 
 const routes: RouteRecordRaw[]= [
     {
@@ -37,6 +38,10 @@ const routes: RouteRecordRaw[]= [
             {
                 path:'/menu',
                 component: Menu
+            },
+            {
+                path:'/progress',
+                component: Progress
             }
         ]
     }
