@@ -1,6 +1,10 @@
 <template>
   <div>
     <m-choose-time @startChange="startChange" @endChange="endChange" :startOption="startOption" :endOption="endOption"></m-choose-time>
+    <br>
+    <br>
+    <br>
+    <m-choose-date :disabledToday="true" @startDateChange="startDateChange" @endDateChange="endDateChange"></m-choose-date>
   </div>
 </template>
 
@@ -25,6 +29,22 @@ let startOption = {
 
 let endOption = {
 
+}
+
+
+// 日期
+
+interface endDateValue {
+  startDate: string,
+  endDate: string
+}
+
+let startDateChange = (val: string)=> {
+  console.log('val: ', val);
+
+}
+let endDateChange = (val: endDateValue)=> {
+  console.log('val: ', val);
 }
 </script>
 

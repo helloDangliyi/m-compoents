@@ -7,6 +7,7 @@ import list from './list'
 import menu from './menu'
 import progress from './progress'
 import chooseTime from './chooseTime'
+import chooseDate from './chooseDate'
 
 const components = [
     chooseArea,
@@ -16,7 +17,8 @@ const components = [
     list,
     menu,
     progress,
-    chooseTime
+    chooseTime,
+    chooseDate
 ]
 
 // 让这个组件可以通过use的
