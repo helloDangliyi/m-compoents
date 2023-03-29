@@ -9,6 +9,8 @@ import progress from './progress'
 import chooseTime from './chooseTime'
 import chooseDate from './chooseDate'
 import chooseCity from './chooseCity'
+import form from './form'
+import table from './table'
 
 const components = [
     chooseArea,
@@ -20,7 +22,9 @@ const components = [
     progress,
     chooseTime,
     chooseDate,
-    chooseCity
+    chooseCity,
+    form,
+    table
 ]
 
 // 让这个组件可以通过use的

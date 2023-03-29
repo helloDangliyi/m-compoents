@@ -71,11 +71,7 @@ let data=[
     name:'进度条',
     index:'/progress'
   },
-  {
-    icon:'Memo',
-    name:'日历',
-    index:'/calendar'
-  },
+  
   {
     icon:'Memo',
     name:'表单',
@@ -85,6 +81,11 @@ let data=[
     icon:'Memo',
     name:'表格',
     index:'/table'
+  },
+  {
+    icon:'Memo',
+    name:'日历',
+    index:'/calendar'
   },
 ]
 
