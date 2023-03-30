@@ -43,11 +43,15 @@ import {PropType,ref,onMounted,watch} from "vue"
 import { FormOptions } from "./type";
 import { cloneDeep } from "lodash";
 
-let emits = defineEmits(['on-preview','on-remove','on-success','on-error','on-progress','on-change','on-exceed','before-upload','before-remove','http-request'])
+let emits = defineEmits(['on-preview','on-remove','on-success','on-error','on-progress','on-change','on-exceed','before-upload','before-remove'])
 
 let props = defineProps({
   options:{
     type: Array as PropType<FormOptions[]>
+  },
+  // 用户自定义上传的方法
+  httpRequest:{
+    type:Function,
   }
 })
 
@@ -78,6 +82,7 @@ let onRemove = (file:any,fileList:any) => {
   emits('on-remove',{ file,fileList})
 }
 let onSuccess = (response: any,file:any,fileList:any) => {
+  console.log('success');
   emits('on-success',{ response,file,fileList})
 }
 let onError = (err:any,file:any,fileList:any) => {
@@ -89,17 +94,14 @@ let onProgress = (evt:any,file:any,fileList:any) => {
 let onChange = (file:any,fileList:any) => {
   emits('on-change',{ file,fileList})
 }
-let onExceed = (file:any,fileList:any) => {
-  emits('on-exceed',{ file,fileList})
+let onExceed = (files:any,fileList:any) => {
+  emits('on-exceed',{ files,fileList})
 }
 let beforeUpload = (file:any) => {
   emits('before-upload', file)
 }
 let beforeRemove = (file:any,fileList:any) => {
   emits('before-remove',{ file,fileList})
-}
-let httpRequest = () =>   {
-  emits('before-upload')
 }
 
 watch(()=>props.options,val => {
