@@ -9,7 +9,7 @@ export interface FormOptions {
     'date-picker'|'input'|'input-number'| 'radio'|'radio-group' | 'radio-button'|'rate'|
     'select'|'option'|'slider'|'switch'|'time-picker'|'time-select'|'transfer'|'upload',
     // 表单项的值
-    value:any,
+    value?:any,
     // 表单项lable
     label?:string,
     // 表单项的标识
@@ -28,5 +28,23 @@ export interface FormOptions {
     },
     // 表单项的子元素
     children?: FormOptions [],
-    
+    // 处理上传组件的属性和方法
+    uploadAttrs?:{
+        action:string,
+        headers?:object,
+        method?:'post'|'put'|'patch',
+        multiple?:boolean,
+        data?:any,
+        name?:string,
+        withCredentials?:boolean,
+        showFileList?:Boolean,
+        drag?:Boolean,
+        accept?:string,
+        thumbnailMode?:boolean,
+        fileList?:any [],
+        listType?:'text' | 'picture' | 'picture-card',
+        autoUpload?:Boolean,
+        disabled?:Boolean,
+        limit?:Number,
+    }
 }

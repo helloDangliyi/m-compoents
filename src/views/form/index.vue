@@ -1,10 +1,31 @@
 <template>
-  <m-form label-width="100px" :options="options"></m-form>
+  <m-form 
+  label-width="100px" 
+  :options="options"
+  @on-preview="handlePreview"
+  @on-remove="handleRemove"
+  @before-remove="beforeRemove"
+  @on-exceed="handleExceed"
+  @on-success="handleSuccess"
+  @on-change="handleChange"
+  @before-upload="handleBeforeUpload"
+  >
+     <template #uploadArea>
+      <el-button type="primary">点击</el-button>
+    </template>
+    <template #uploadTip>
+      <div style="font-size: 12px;color: #ccc;">
+        jpg/png files with a size less than 500KB.
+      </div>
+    </template>
+  </m-form>
 </template>
 
 <script lang='ts' setup>
 import {} from "vue"
 import { FormOptions } from "../../components/form/src/type";
+import { ElMessage, ElMessageBox } from 'element-plus'
+
 let options:FormOptions [] =[
   {
     type:'input',
@@ -148,7 +169,65 @@ let options:FormOptions [] =[
       },
     ]
   },
+  {
+    type:'upload',
+    label:'上传',
+    prop:'pic',
+    rules:[
+      {
+        required: true,
+        message:'不能为空',
+        trigger:'blur',
+      }
+    ],
+    uploadAttrs:{
+      action:'https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15'
+    }
+  }
 ]
+
+const handleRemove = (val:any) => {
+  let {file, fileList} = val
+  console.log('handleRemove',file, fileList)
+}
+
+const handlePreview = (val:any) => {
+  let {file, fileList} = val
+  console.log('handlePreview',file, fileList)
+}
+
+const handleExceed = (val:any) => {
+  let {files, fileList} = val
+  ElMessage.warning(
+    `handleExceed The limit is 3, you selected ${files.length} files this time, add up to ${
+      files.length + fileList.length
+    } totally`
+  )
+}
+
+const beforeRemove = (val:any) => {
+  let {file, fileList} = val
+  return ElMessageBox.confirm(
+    `beforeRemove Cancel the transfert of ${file.name} ?`
+  ).then(
+    () => true,
+    () => false
+  )
+}
+
+let handleSuccess = (val:any) =>{
+  let {response,file, fileList} = val
+  console.log('handleSuccess',response,file,fileList);
+}
+
+let handleChange = (val:any)=>{
+  let {file, fileList} = val
+  console.log('handleChange',file,fileList);
+}
+
+let handleBeforeUpload = (val:any) =>{
+  console.log('handleBeforeUpload',val);
+}
 </script>
 
 <style lang="scss" scoped></style>
