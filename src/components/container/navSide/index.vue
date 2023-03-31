@@ -79,6 +79,11 @@ let data=[
   },
   {
     icon:'Memo',
+    name:'弹出框表单',
+    index:'/modelForm'
+  },
+  {
+    icon:'Memo',
     name:'表格',
     index:'/table'
   },

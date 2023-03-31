@@ -4,7 +4,7 @@
   </el-button>
   <div class="m-choose-icon-dialog-body-height">
     <el-dialog v-model="dialogVisible" :title="title" :height="'700px'">
-        <el-scrollbar height="100%">
+        <!-- <el-scrollbar height="100%"> -->
             <div class="container">
             <div @click="clickItem(item)" class="item" v-for="(item,index) in Object.keys(ElIcons)" :key="index">
                 <div class="text">
@@ -14,7 +14,7 @@
                 <div class="icon">{{ item }}</div>
             </div>
         </div>
-        </el-scrollbar>
+        <!-- </el-scrollbar> -->
         
     </el-dialog>
   </div>

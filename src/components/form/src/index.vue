@@ -43,7 +43,6 @@ import { PropType, ref, onMounted, watch, nextTick,shallowRef } from "vue"
 import { FormOptions } from "./types/type";
 import { cloneDeep } from "lodash";
 import type { ElForm } from 'element-plus';
-import { ITEM_RENDER_EVT } from 'element-plus/es/components/virtual-list/src/defaults';
 type FormInstance = InstanceType<typeof ElForm>;
 
 
@@ -72,6 +71,16 @@ const editorConfig = { placeholder: '请输入描述...' }
 
 const handleCreated = (editor:any) => {
   editorRef.value = editor // 记录 editor 实例，重要！
+}
+
+// 表单校验
+let validate = () =>{
+  return form.value!.validate
+}
+
+// 获取表单数据
+let getFormData = () =>{
+  return model.value
 }
 
 const handleChange = (editor:any)=>{
@@ -161,7 +170,9 @@ const resetFields = () => {
 }
 
 defineExpose({
-  resetFields
+  resetFields,
+  validate,
+  getFormData
 })
 
 

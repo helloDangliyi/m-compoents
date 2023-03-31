@@ -1,16 +1,16 @@
 <template>
-  <m-form 
-    ref="formRef" 
-    label-width="100px" 
-    :options="options" 
-    @on-preview="handlePreview" 
-    @on-remove="handleRemove"
-    @before-remove="beforeRemove" 
-    @on-exceed="handleExceed" 
-    @on-success="handleSuccess" 
-    @on-change="handleChange"
-    @before-upload="handleBeforeUpload">
-    <template #uploadArea>
+  <el-button type="primary" @click="open">打开</el-button>
+  <m-model-form 
+  isScroll
+  title="编辑用户" 
+  v-model:visible="visible" 
+  :options="options" 
+  :width="700"
+  :on-change="handleChange"
+  :on-success="handleSuccess" 
+  >
+
+  <template #uploadArea>
       <el-button type="primary">点击</el-button>
     </template>
     <template #uploadTip>
@@ -19,25 +19,32 @@
       </div>
     </template>
 
-    <template #action="scope">
-      <el-button type="primary" @click="submitForm(scope)">提交</el-button>
-      <el-button @click="resetForm(scope)">重置</el-button>
+    <template #footer="{form}">
+      <span class="dialog-footer">
+        <el-button @click="visible = false">取消</el-button>
+        <el-button type="primary" @click="onConfirm(form)">
+          确定
+        </el-button>
+      </span>
     </template>
-  </m-form>
+
+  </m-model-form>
 </template>
 
 <script lang='ts' setup>
-import {ref} from 'vue'
+import { ref } from "vue"
 import { FormOptions } from "../../components/form/src/types/type";
 import { ElMessage, ElMessageBox } from 'element-plus'
+
 import type { ElForm } from 'element-plus';
-import form from '../../components/form';
 type FormInstance = InstanceType<typeof ElForm>;
 
-  interface Scope {
-  form: FormInstance,
-  model: any,
+let visible = ref<boolean>(false)
+
+let open = () => {
+  visible.value = true
 }
+
 let options: FormOptions[] = [
   {
     type: 'input',
@@ -211,54 +218,13 @@ let options: FormOptions[] = [
     ]
   }
 ]
-
-let formRef = ref<any>(null)
-
-let submitForm = (data: Scope) => {
-  data.form.validate((valid) => {
-    if(valid) {
-      console.log(data.model);
-      ElMessage.success('提交成功');
-    }else {
-      ElMessage.error('请填写表单');
-    }
-  })
-}
-let resetForm = (data: Scope) => {
-  // data.form.removeField()
-
-   // 调用子组件封装form的重置方法
-   formRef.value.resetFields()
+let onCancel = ( form: FormInstance) =>{
+  
 }
 
-
-
-const handleRemove = (val: any) => {
+let handleChange = (val: any) => {
   let { file, fileList } = val
-  console.log('handleRemove', file, fileList)
-}
-
-const handlePreview = (val: any) => {
-  let { file, fileList } = val
-  console.log('handlePreview', file, fileList)
-}
-
-const handleExceed = (val: any) => {
-  let { files, fileList } = val
-  ElMessage.warning(
-    `handleExceed The limit is 3, you selected ${files.length} files this time, add up to ${files.length + fileList.length
-    } totally`
-  )
-}
-
-const beforeRemove = (val: any) => {
-  let { file, fileList } = val
-  return ElMessageBox.confirm(
-    `beforeRemove Cancel the transfert of ${file.name} ?`
-  ).then(
-    () => true,
-    () => false
-  )
+  console.log('handleChange', file, fileList);
 }
 
 let handleSuccess = (val: any) => {
@@ -267,13 +233,19 @@ let handleSuccess = (val: any) => {
   console.log('handleSuccess', response, file, fileList);
 }
 
-let handleChange = (val: any) => {
-  let { file, fileList } = val
-  console.log('handleChange', file, fileList);
-}
+let onConfirm = ( form: any) =>{
+  console.log('form: ', form);
+  let validater = form.validate()
+  let formData = form.getFormData()
+  validater((valid:any) =>{
+    if(valid) {
+      ElMessage.success('校验成功')
+  console.log('formData: ', formData);
 
-let handleBeforeUpload = (val: any) => {
-  console.log('handleBeforeUpload', val);
+    }else {
+      ElMessage.error('校验失败')
+    }
+  })
 }
 </script>
 

@@ -11,6 +11,7 @@ import chooseDate from './chooseDate'
 import chooseCity from './chooseCity'
 import form from './form'
 import table from './table'
+import modelForm from './modelForm'
 
 const components = [
     chooseArea,
@@ -24,7 +25,8 @@ const components = [
     chooseDate,
     chooseCity,
     form,
-    table
+    table,
+    modelForm
 ]
 
 // 让这个组件可以通过use的
