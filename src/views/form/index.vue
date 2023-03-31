@@ -28,7 +28,7 @@
 
 <script lang='ts' setup>
 import {ref} from 'vue'
-import { FormOptions } from "../../components/form/src/type";
+import { FormOptions } from "../../components/form/src/types/type";
 import { ElMessage, ElMessageBox } from 'element-plus'
 import type { ElForm } from 'element-plus';
 type FormInstance = InstanceType<typeof ElForm>;
@@ -185,17 +185,29 @@ let options: FormOptions[] = [
     label: '上传',
     prop: 'pic',
     rules: [
-      {
-        required: true,
-        message: '图片不能为空',
-        trigger: 'blur',
-      }
+      // {
+      //   required: true,
+      //   message: '图片不能为空',
+      //   trigger: 'blur',
+      // }
     ],
     uploadAttrs: {
       action: "https://jsonplaceholder.typicode.com/posts/",
       multiple: true,
       limit: 3,
     }
+  },
+  {
+    type: 'editor',
+    label: '描述',
+    prop: 'desc',
+    rules:[
+      {
+        required: true,
+        message:'描述不能为空',
+        trigger: 'blur'
+      }
+    ]
   }
 ]
 
@@ -214,7 +226,7 @@ let submitForm = (data: Scope) => {
 let resetForm = (data: Scope) => {
   // data.form.removeField()
 
-   // 调用封装form的重置方法
+   // 调用子组件封装form的重置方法
    formRef.value.resetFields()
 }
 

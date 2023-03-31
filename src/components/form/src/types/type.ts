@@ -1,5 +1,5 @@
 // 可配置的表单
-import { RuleItem } from './types/rule'
+import { RuleItem } from './rule'
 import { CSSProperties } from 'vue'
 
 // 表单每一项的配置选项
@@ -7,7 +7,7 @@ export interface FormOptions {
     // 表单项的元素
     type:'cascader' | 'checkbox'|'checkbox-group' | 'checkbox-button'|'color-picker'|
     'date-picker'|'input'|'input-number'| 'radio'|'radio-group' | 'radio-button'|'rate'|
-    'select'|'option'|'slider'|'switch'|'time-picker'|'time-select'|'transfer'|'upload',
+    'select'|'option'|'slider'|'switch'|'time-picker'|'time-select'|'transfer'|'upload'|'editor',
     // 表单项的值
     value?:any,
     // 表单项lable
