@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.10",
+    "@fullcalendar/core": "^6.1.5",
+    "@fullcalendar/daygrid": "^6.1.5",
+    "@fullcalendar/interaction": "^6.1.5",
     "@types/lodash": "^4.14.192",
     "@wangeditor/editor-for-vue": "^5.1.12",
     "element-plus": "^2.2.29",
