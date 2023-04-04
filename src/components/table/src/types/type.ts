@@ -1,7 +1,7 @@
 export interface TableOptions {
     // 表头
     label: String,
-    prop?:String,
+    prop:String,
     width?:String | Number,
     align?: 'letf'| 'center'|'right',
     // 自定义列模板

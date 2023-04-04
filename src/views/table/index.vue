@@ -1,13 +1,15 @@
 <template>
-  <m-table 
+  <m-table
+  isEditRow
+  v-model:editRowIndex="editRowIndex"
   :data="tableData" 
   :options="options"
   elementLoadingText="加载中..."
   elementLoadingBackground="rgba(0,0,0,.8)"
   :elementLoadingSvg="svg"
   elementLoadingSvgViewBox="-10, -10, 50, 50"
-  @comfirm="clickCheck"
-  @cancel="clickClose"
+  @comfirm="clickComfirm"
+  @cancel="clickCancel"
   editIcon="tools"
   >
     <template #date="{scope}">
@@ -34,11 +36,16 @@
     <el-button type="primary" @click="onEdit(scope)">编辑</el-button>
     <el-button type="danger" @click="onDelete(scope)">删除</el-button>
   </template>
+  
+  <template #editRow="{scope}">
+    <el-button type="primary">确认</el-button>
+    <el-button type="danger">取消</el-button>
+  </template>
 
   <!-- <template #editCell="{scope}">
     <div style="display: flex;align-items: center;justify-content: center;height:100%">
-      <el-button type="primary" size="small" @click="clickCheck(scope)">确认</el-button>
-      <el-button type="danger" size="small" @click="clickClose(scope)">取消</el-button>
+      <el-button type="primary" size="small" @click="clickComfirm(scope)">确认</el-button>
+      <el-button type="danger" size="small" @click="clickCancel(scope)">取消</el-button>
     </div>
   </template> -->
   </m-table>
@@ -65,10 +72,7 @@ const svg = `
         " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
       `
 
-let tableData = ref<TableData []>([])
-
-setTimeout(()=>{
-   tableData.value = [
+let tableData = ref<TableData []>([
   {
     date: '2016-05-03',
     name: 'Tom',
@@ -89,8 +93,34 @@ setTimeout(()=>{
     name: 'Tom',
     address: 'No. 189, Grove St, Los Angeles',
   },
-]
-},100)
+])
+
+let editRowIndex = ref<string>('')
+
+// setTimeout(()=>{
+//    tableData.value = [
+//   {
+//     date: '2016-05-03',
+//     name: 'Tom',
+//     address: 'No. 189, Grove St, Los Angeles',
+//   },
+//   {
+//     date: '2016-05-02',
+//     name: 'Tom',
+//     address: 'No. 189, Grove St, Los Angeles',
+//   },
+//   {
+//     date: '2016-05-04',
+//     name: 'Tom',
+//     address: 'No. 189, Grove St, Los Angeles',
+//   },
+//   {
+//     date: '2016-05-01',
+//     name: 'Tom',
+//     address: 'No. 189, Grove St, Los Angeles',
+//   },
+// ]
+// },100)
 
 
 
@@ -132,12 +162,14 @@ let onDelete = (row :any)=>{
 
 }
 
-let clickCheck = (value:any) =>{
+let clickComfirm = (value:any) =>{
   console.log('clickCheckvalue: ', value);
+  editRowIndex.value = 'edit'
 }
 
-let clickClose = (value:any) =>{
-  console.log('clickClosevalue: ', value);
+let clickCancel = (value:any) =>{
+  console.log('clickCancelvalue: ', value);
+  editRowIndex.value = ''
 }
 </script>
 
