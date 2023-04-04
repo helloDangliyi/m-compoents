@@ -1,5 +1,6 @@
 <template>
-  <el-table 
+  <el-table
+  v-bind="$attrs"
   :data="tableData" 
   v-loading="isLoading"
   :element-loading-text="elementLoadingText"
