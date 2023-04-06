@@ -6,7 +6,11 @@ import 'element-plus/dist/index.css'
 import * as Icons from '@element-plus/icons-vue'
 import { toLine } from './utils'
 
-import mUI from './components/index'
+// import mUI from './components/index'
+
+// 全部引入
+import mUI from '../lib/mooc-element-components.mjs'
+import '../lib/style.css'
 
 const app = createApp(App)
 
