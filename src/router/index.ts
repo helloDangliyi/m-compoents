@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
+import { createRouter,createWebHashHistory, createWebHistory, RouteRecordRaw} from 'vue-router'
 import Container from '../components/container/src/index.vue'
 import Home from '../views/Home.vue';
 import ChooseIcon from '../views/chooseIcon/index.vue'
@@ -75,7 +75,7 @@ const routes: RouteRecordRaw[]= [
 
 const router = createRouter({
     routes,
-    history: createWebHistory()
+    history: createWebHashHistory()
 })
 
 export default router

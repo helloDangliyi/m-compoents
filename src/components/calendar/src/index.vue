@@ -96,7 +96,7 @@ let renderCalender = () =>{
             events(e,callback){
               if(props.events.length) {
                 // console.log('props.events.length: ', props.events);
-                callback(props.events) //可以显示在日历上
+                // callback(props.events) //可以显示在日历上
               }else {
                 callback([])
               }
