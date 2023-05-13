@@ -24,6 +24,10 @@ const routes: RouteRecordRaw[]= [
                 component: ChooseIcon
             },
             {
+                path:'/timeButton',
+                component: ()=> import ('../views/timeButton/index.vue')
+            },
+            {
                 path: '/chooseArea',
                 // 使用路由懒加载
                 component: ChooseArea

@@ -37,6 +37,11 @@ let data=[
     index:'/chooseIcon'
   },
   {
+    icon:'Check',
+    name:'时间倒计时按钮',
+    index:'/timeButton'
+  },
+  {
     icon:'Location',
     name:'省市区选择',
     index:'/chooseArea'

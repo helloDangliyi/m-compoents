@@ -13,6 +13,7 @@ import form from './form'
 import table from './table'
 import modelForm from './modelForm'
 import calendar from './calendar'
+import timeButton from './timeButton'
 
 const components = [
     chooseArea,
@@ -28,7 +29,8 @@ const components = [
     form,
     table,
     modelForm,
-    calendar
+    calendar,
+    timeButton
 ]
 
 // 让这个组件可以通过use的
